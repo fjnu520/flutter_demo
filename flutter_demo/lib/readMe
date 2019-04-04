@@ -1,0 +1,65 @@
+
+
+1.安装插件
+
+    需要安装两个插件:
+    Flutter插件： 支持Flutter开发工作流 (运行、调试、热重载等).
+    Dart插件： 提供代码分析 (输入代码时进行验证、代码补全等).
+
+    启动Android Studio.
+    打开插件首选项 (Preferences>Plugins on macOS, File>Settings>Plugins on Windows & Linux).
+    选择 Browse repositories…, 选择 Flutter 插件并点击 install.
+    选择 Dart 插件并点击 install.
+    重启Android Studio后插件生效.
+
+2.MAC中配置SDK环境变量
+
+    在Mac系统中，很多时候第一次在Android SDK中使用adb的时候。无法使用。会提示-bash: abd: command not found。
+    造成此类现象的原因是：未配置Android的环境变量。因此，您需为Mac中的Android SDK配置环境变量。
+    启动Mac自带的终端Terminal。
+    进入当前用户的home目录。
+    在命令行输入echo $HOME
+    创建.bash_profile文件。
+    命令行输入touch .bash_profile
+    打开.bash_profile文件。
+    命令行输入open -e .bash_profile此命令行输入完毕后，会自动弹出 .bash_profile 文件的编辑窗口
+    在.bash_profile文件中输入
+    export PATH=/Users/您的用户名/文件路径/platform-tools/:$PATH
+    注意：如果需要添加多个路径到PATH下时，需要用“:”(英文的冒号)隔开。因为android和adb这些命令是在不同的文件夹中的，格式是：PATH=PATH了。例如：
+    export PATH=${PATH}:/Users/ShaneChen/Documents/android-sdk-macosx/platform-tools:/Users/ShaneChen/Documents/android-sdk-macosx/tools
+    保存文件。
+    直接关闭.bash_profile文件，即可自动保存您输入的内容。
+    更新刚配置的环境变量
+    在命令行中输入source .bash_profile
+    验证配置是否成功
+    输入adb，如果没有出现-bash: adb: command not found；而出现adb的命令参数解释。则表明环境变量配置成功。
+
+3.sdkmanager liences
+
+   通过命令
+   sdkmanager --licenses
+   保证自己同意所有licenses
+
+4.创建新应用
+
+  选择 File>New Flutter Project
+  选择 Flutter application 作为 project 类型, 然后点击 Next
+  输入项目名称 (如 myapp), 然后点击 Next
+  点击 Finish
+  等待Android Studio安装SDK并创建项目.
+  上述命令创建一个Flutter项目，项目名为myapp，其中包含一个使用Material 组件的简单演示应用程序。
+
+5.使用外部包(package)    english_word
+
+    pubspec文件管理Flutter应用程序的assets(资源，如图片、package等)。
+    在pubspec.yaml中，将english_words（3.1.0或更高版本）添加到依赖项列表，如下面高亮显示的行：
+
+    dependencies:
+      flutter:
+        sdk: flutter
+
+      cupertino_icons: ^0.1.0
+      english_words: ^3.1.0
+
+    在代码中引入
+    import 'package:english_words/english_words.dart';
