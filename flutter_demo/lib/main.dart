@@ -18,7 +18,7 @@ class Main extends StatelessWidget {
 
 class HomePage extends StatefulWidget {
   _HomePageSate createState() => new _HomePageSate();
-}}
+}
 
 class _HomePageSate extends State<HomePage> {
   @override
@@ -99,7 +99,7 @@ MaterialButton buildImageButton(BuildContext context) {
           .push(new MaterialPageRoute(builder: (context) => new ImageApp()));
     },
   );
-}}
+}
 
 /// Html
 MaterialButton buildHtmlButton(BuildContext context) {
